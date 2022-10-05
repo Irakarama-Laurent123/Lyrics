@@ -12,7 +12,7 @@ import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 
-const TopChartCard = () => (
+const TopChartCard = ({ song, i }) => (
   <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
     {song.title}
   </div>
@@ -56,6 +56,42 @@ const TopPlay = () => {
             <TopChartCard song={song} i={i} key={song.key} />
           ))}
         </div>
+      </div>
+
+      <div className="w-full flex flex-col mt-8">
+        <div className="flex flex-row justify-between items-center">
+          <h2 className="text-white font-bold text-2xl">Top Artists</h2>
+          <Link to="/top-artists">
+            <p className="text-gray-300 text-base cursor-pointer">See More</p>
+          </Link>
+        </div>
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={15}
+          freeMode
+          centeredSlides
+          centeredSlidesBounds
+          modules={[FreeMode]}
+          className="mt-4"
+        >
+          {topPlays?.map((song, i) => (
+            <SwiperSlide
+              song={song}
+              i={i}
+              key={song?.key}
+              style={{ width: "25%", height: "auto" }}
+              className="shadow-lg rounded-full animate-sliderright"
+            >
+              <Link to={`/artists/${song?.artists[0].adamid}`}>
+                <img
+                  src={song?.images.background}
+                  alt="name"
+                  className="rounded-full w-full object-cover"
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
