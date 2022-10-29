@@ -25,7 +25,7 @@ const SongDetails = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = () => {
+  const handlePlayClick = (song, i) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -33,6 +33,8 @@ const SongDetails = () => {
   if (isFetchingSongDetails || isFetchingRelatedSongs)
     // eslint-disable-next-line curly
     return <Loader title="Searching song details" />;
+
+  if (error) return <Error />;
 
   return (
     <div className="flex flex-col">

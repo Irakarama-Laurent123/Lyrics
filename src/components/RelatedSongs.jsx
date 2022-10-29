@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import SongBar from "./SongBar";
 
 const RelatedSongs = ({
