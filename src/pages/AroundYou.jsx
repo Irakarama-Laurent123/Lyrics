@@ -20,7 +20,7 @@ const AroundYou = () => {
         // eslint-disable-next-line comma-dangle
         "https://geo.ipify.org/api/v2/country?apiKey=at_8bxJGtqy1kVOUMY3fOP4zlJuC3yFx&"
       )
-      .then((res) => setCountry("US" || res?.data?.location.country))
+      .then((res) => setCountry("US" || "JP" || res?.data?.location.country))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [country]);
