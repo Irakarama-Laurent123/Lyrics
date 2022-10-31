@@ -1,6 +1,6 @@
 # Lyrics
 
-![Preview](img/preview.jpg)
+![Preview](img/preview.png)
 
 ## A Spotify Clone
 
